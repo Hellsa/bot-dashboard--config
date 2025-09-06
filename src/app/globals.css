@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+
+  --color-card: #000000;
+  --color-card-foreground: #ffffff;
+
+  --color-popover: #1a1a1a;
+  --color-popover-foreground: #ffffff;
+
+  --color-primary: #33a65b; /* Shinaky green */
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #1a1a1a;
+  --color-secondary-foreground: #ffffff;
+
+  --color-muted: #1a1a1a;
+  --color-muted-foreground: #808080;
+
+  --color-accent: #33a65b;
+  --color-accent-foreground: #ffffff;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #333333;
+  --color-input: #333333;
+  --color-ring: #33a65b;
+
+  --color-chart-1: #e67e22;
+  --color-chart-2: #2d8659;
+  --color-chart-3: #1e3a5f;
+  --color-chart-4: #f1c40f;
+  --color-chart-5: #e74c3c;
+
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  /* Custom colors from Shinaky design */
+  --color-shinaky-dark-blue: #0d1217;
+  --color-shinaky-dark-bg: #0d0d0d;
+  --color-shinaky-grid-line: #33a65b; /* Green for grid lines */
+  --color-shinaky-button-border: #33a65b;
+  --color-shinaky-discord-blue: #5865f2;
+  --color-shinaky-premium-green: #37b764;
+  --color-shinaky-footer-text: #808080;
+  --color-shinaky-footer-link: #33a65b;
+  --color-shinaky-social-icon: #ffffff;
+  --color-shinaky-card-bg: #1a1a1a;
+  --color-shinaky-card-border: #333333;
+  --color-shinaky-new-badge: #ff5e3b;
+  --color-shinaky-purple: #9a4c95;
+
+  --font-poppins: 'Poppins', sans-serif;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+}
+
+@layer utilities {
+  body {
+    font-family: var(--font-poppins);
+  }
+}
+
+@layer base {
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+    --chart-1: var(--color-chart-1);
+    --chart-2: var(--color-chart-2);
+    --chart-3: var(--color-chart-3);
+    --chart-4: var(--color-chart-4);
+    --chart-5: var(--color-chart-5);
+    --radius: var(--radius-md);
+
+    /* Shinaky specific variables */
+    --shinaky-dark-blue: var(--color-shinaky-dark-blue);
+    --shinaky-dark-bg: var(--color-shinaky-dark-bg);
+    --shinaky-grid-line: var(--color-shinaky-grid-line);
+    --shinaky-button-border: var(--color-shinaky-button-border);
+    --shinaky-discord-blue: var(--color-shinaky-discord-blue);
+    --shinaky-premium-green: var(--color--shinaky-premium-green);
+    --shinaky-footer-text: var(--color-shinaky-footer-text);
+    --shinaky-footer-link: var(--color-shinaky-footer-link);
+    --shinaky-social-icon: var(--color-shinaky-social-icon);
+    --shinaky-card-bg: var(--color-shinaky-card-bg);
+    --shinaky-card-border: var(--color-shinaky-card-border);
+    --shinaky-new-badge: var(--color-shinaky-new-badge);
+    --shinaky-purple: var(--color-shinaky-purple);
+  }
+
+  /* Dark mode is the default and only visible theme from the reference images */
+  /* No explicit .dark class needed as the base matches the design */
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-poppins);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  p {
+    color: var(--foreground);
+    line-height: 1.5;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  .container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+    max-width: 1280px; /* Adjust based on content width from reference */
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
